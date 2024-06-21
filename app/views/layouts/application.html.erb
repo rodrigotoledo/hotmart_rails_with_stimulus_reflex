@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StimulusReflexExample</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <header>
+      <h1>Search results</h1>
+      <%= form_for :search_posts, url: nil, data: { reflex: "submit->SearchPosts#search" }, html: { class: "flex items-center space-x-2" } do |f| %>
+        <%= f.text_field :query, data: { reflex: "keyup->SearchPosts#search", reflex_dataset: "combined" }, placeholder: "Search somthing..." %>
+        <%= f.submit "Search" %>
+      <% end %>
+      </header>
+    <%= yield %>
+  </body>
+</html>

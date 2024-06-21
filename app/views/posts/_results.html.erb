@@ -1,0 +1,9 @@
+<% posts.each do |post| %>
+  <%= render post %>
+  <p>
+    <%= link_to "Show this post", post %>
+  </p>
+  <p>
+    <%= button_tag  post.completed_at? ? "Incomplete this" : "Complete this", value: post.id, data: {reflex: "click->PostActions#toogle_complete_at", value: post.id } %>
+  </p>
+<% end %>
